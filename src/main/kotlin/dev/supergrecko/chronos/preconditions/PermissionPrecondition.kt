@@ -9,7 +9,7 @@ import me.aberrantfox.kjdautils.internal.command.Pass
 import me.aberrantfox.kjdautils.internal.command.precondition
 
 @Precondition(100)
-fun hasPermission(config: ConfigService) = precondition {
+internal fun hasPermission(config: ConfigService) = precondition {
     val admin = it.message.member
         ?.roles
         ?.any { role -> config.config.adminRole == role.name }

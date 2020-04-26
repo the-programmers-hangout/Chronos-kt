@@ -4,6 +4,6 @@ import dev.supergrecko.chronos.dataclasses.BotConfiguration
 import me.aberrantfox.kjdautils.api.annotation.Service
 
 @Service
-open class ConfigService(val config: BotConfiguration) {
+internal open class ConfigService(internal val config: BotConfiguration) {
 
 }

@@ -4,12 +4,11 @@ import dev.supergrecko.chronos.extensions.PermissionLevel
 import dev.supergrecko.chronos.extensions.permission
 import me.aberrantfox.kjdautils.api.annotation.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
-import me.aberrantfox.kjdautils.internal.arguments.IntegerArg
 import me.aberrantfox.kjdautils.internal.arguments.TextChannelArg
 import me.aberrantfox.kjdautils.internal.arguments.TimeStringArg
 
 @CommandSet("Moderation")
-fun moderationCommands() = commands {
+internal fun moderationCommands() = commands {
     command("SetInterval") {
         permission = PermissionLevel.ADMIN
 

@@ -8,7 +8,7 @@ import me.aberrantfox.kjdautils.api.dsl.embed
 import me.aberrantfox.kjdautils.internal.arguments.TextChannelArg
 
 @CommandSet("Information")
-fun informationCommands() = commands {
+internal fun informationCommands() = commands {
     command("GetInterval") {
         permission = PermissionLevel.ADMIN
 
@@ -39,11 +39,12 @@ fun informationCommands() = commands {
                 title = "Channel Slow-mode Intervals"
 
                 description = """
-                    Showing results for channels
+                    Showing results for all channels where slow-mode is enabled
                     
-                    ${channels.joinToString("\n") { channel ->
-                    "${channel.asMention}: ${channel.slowmode} seconds"
-                }}
+                    ${channels.filter { it.slowmode != 0 }
+                    .joinToString("\n") { channel ->
+                        "${channel.asMention}: ${channel.slowmode} seconds"
+                    }}
                 """.trimIndent()
             }
 
