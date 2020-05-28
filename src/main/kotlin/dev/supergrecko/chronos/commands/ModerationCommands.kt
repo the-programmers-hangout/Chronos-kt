@@ -11,7 +11,6 @@ import me.aberrantfox.kjdautils.internal.arguments.TimeStringArg
 internal fun moderationCommands() = commands {
     command("SetInterval") {
         permission = PermissionLevel.ADMIN
-
         execute(TextChannelArg, TimeStringArg) {
             val (channel, interval) = it.args
 
@@ -19,10 +18,8 @@ internal fun moderationCommands() = commands {
                 return@execute it.respond("Invalid time element passed.")
             }
 
-            val res = it
-
-            channel.manager.setSlowmode(interval.toInt()).queue {
-                res.respond("Successfully set slow-mode in channel ${channel
+            channel.manager.setSlowmode(interval.toInt()).queue { _ ->
+                it.respond("Successfully set slow-mode in channel ${channel
                     .asMention} to ${interval.toInt()} seconds.")
             }
         }

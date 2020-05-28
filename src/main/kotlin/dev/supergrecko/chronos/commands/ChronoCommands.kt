@@ -6,37 +6,32 @@ import dev.supergrecko.chronos.extensions.permission
 import me.aberrantfox.kjdautils.api.annotation.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
 
-@CommandSet("Chrono")
+@CommandSet("AutomaticSlowmode")
 internal fun chronoCommands(config: BotConfiguration) = commands {
-    command("Chrono") {
+    command("Disable") {
         permission = PermissionLevel.ADMIN
+        execute {
+            config.enableChronoTimer = false
 
+            it.respond("Chrono message tracking has been disabled")
+        }
+    }
+
+    command("Enable") {
+        permission = PermissionLevel.ADMIN
         execute {
             val threads = Runtime.getRuntime().availableProcessors()
 
-            val result = if (config.enableChronoTimer) {
-                "Chrono is enabled. Server is running with $threads threads."
+            if (threads > 1) {
+                config.enableChronoTimer = true
+
+                it.respond("Chrono message tracking has been enabled")
             } else {
-                "Chrono is disabled. $threads available threads."
+                it.respond(
+                    "Cannot enable message tracking, only $threads " +
+                            "available. 2 required."
+                )
             }
-
-            it.respond(result)
-        }
-    }
-
-    command("EnableChrono") {
-        permission = PermissionLevel.ADMIN
-
-        execute {
-
-        }
-    }
-
-    command("DisableChrono") {
-        permission = PermissionLevel.ADMIN
-
-        execute {
-
         }
     }
 }

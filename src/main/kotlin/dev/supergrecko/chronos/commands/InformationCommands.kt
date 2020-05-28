@@ -11,7 +11,6 @@ import me.aberrantfox.kjdautils.internal.arguments.TextChannelArg
 internal fun informationCommands() = commands {
     command("GetInterval") {
         permission = PermissionLevel.ADMIN
-
         execute(TextChannelArg) {
             val (channel) = it.args
 
@@ -31,7 +30,6 @@ internal fun informationCommands() = commands {
 
     command("GetIntervals") {
         permission = PermissionLevel.ADMIN
-
         execute {
             val channels = it.guild?.textChannels ?: listOf()
 

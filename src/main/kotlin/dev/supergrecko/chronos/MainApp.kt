@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     startBot(token) {
         configure {
             globalPath = "dev.supergrecko.chronos."
-            prefix = "?"
+            prefix = "chrono!"
             deleteMode = PrefixDeleteMode.Single
             reactToCommands = true
         }
